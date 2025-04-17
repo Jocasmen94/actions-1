@@ -20,7 +20,7 @@ jobs:
             cat dragon.txt
         
         - name: Upload artifact
-          uses: actions/upload-artifact@v3.2.0
+          uses: actions/upload-artifact@v2
           with:
             name: dragon-artifact
             path: dragon.txt
@@ -30,7 +30,7 @@ jobs:
         runs-on: ubuntu-latest 
         steps:
         - name: Download artifact
-          uses: actions/download-artifact@v3.2.0
+          uses: actions/download-artifact@v2
           with:
             name: dragon-artifact
         
@@ -42,7 +42,7 @@ jobs:
         runs-on: ubuntu-latest 
         steps:
         - name: Download artifact
-          uses: actions/download-artifact@v3.2.0
+          uses: actions/download-artifact@v2
           with:
             name: dragon-artifact
 
