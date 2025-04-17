@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest 
         steps:
         - name: install cowsay program
-          uses: sudo apt-get install cowsay -y
+          run: sudo apt-get install cowsay -y
         
         - name: execute cowsay cmd
           run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" »> dragon.txt grep -i "dragon" dragon.txt
