@@ -6,44 +6,43 @@ jobs:
     build-job1:
         runs-on: ubuntu-latest 
         steps:
-        - name: install cowsay program
+        - name: Install cowsay program
           run: sudo apt-get install cowsay -y
         
-        - name: execute cowsay cmd
-          run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" »> dragon.txt grep -i "dragon" dragon.txt
+        - name: Execute cowsay cmd
+          run: |
+            cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+            grep -i "dragon" dragon.txt
         
         - name: Upload artifact
-          uses: actions/upload-artifact@v3.1.3
+          uses: actions/upload-artifact@v3
           with:
             name: dragon-artifact
             path: dragon.txt
-
 
     test-job2:
         needs: [build-job1]
         runs-on: ubuntu-latest 
         steps:
-        - name: download artifact
-          uses: actions/upload-artifact@3.0.2
+        - name: Download artifact
+          uses: actions/download-artifact@v3
           with:
             name: dragon-artifact
         
-        - name: test file exists
+        - name: Test file exists
           run: grep -i "dragon" dragon.txt
 
     deploy-job3:
         needs: [test-job2]
         runs-on: ubuntu-latest 
         steps:
-        - name: download artifact
-          uses: actions/download-artifact@v3.0.2
+        - name: Download artifact
+          uses: actions/download-artifact@v3
           with:
             name: dragon-artifact
 
-        - name: read file
+        - name: Read file
           run: cat dragon.txt
         
-        - name: deploy 
-          run: echo Deploying ... .. .
-
-
+        - name: Deploy 
+          run: echo "Deploying ... .. ."
