@@ -12,7 +12,7 @@ jobs:
         - name: execute cowsay cmd
           run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" »> dragon.txt grep -i "dragon" dragon.txt
         
-        - name: upload artifact
+        - name: Upload artifact
           uses: actions/upload-artifact@v3
           with:
             name: dragon-artifact
@@ -24,7 +24,7 @@ jobs:
         runs-on: ubuntu-latest 
         steps:
         - name: download artifact
-          uses: actions/download-artifact@v3
+          uses: actions/upload-artifact@v3
           with:
             name: dragon-artifact
         
